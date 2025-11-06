@@ -1,0 +1,11 @@
+{
+  "EventType": "SalesOrderCreated",
+  "ResourceType": "SalesOrder",
+  "SalesOrderGuid": "00000000-0000-0000-0000-000000000123",
+  "OccurredAt": "2024-01-20T10:15:30.000Z",
+  "TenantId": "demo-tenant",
+  "Resource": {
+    "OrderNumber": "SO-1001",
+    "Status": "Backordered"
+  }
+}

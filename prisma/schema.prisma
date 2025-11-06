@@ -1,0 +1,70 @@
+
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Secret {
+
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProbeResult {
+  id        Int      @id @default(autoincrement())
+  resource  String
+  ok        Boolean
+  status    Int
+  message   String?
+  responseTimeMs Int @default(0)
+  createdAt DateTime @default(now())
+}
+
+model SyncTask {
+  id           Int      @id @default(autoincrement())
+  source       String
+  type         String
+  sourceGuid   String
+  status       String
+  attempts     Int      @default(0)
+  lastError    String?
+  eventType    String?
+  stagingId    Int      @unique
+  staging      Staging  @relation(fields: [stagingId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@unique([source, sourceGuid, type], name: "sync_source_guid_type")
+}
+
+model Staging {
+  id         Int      @id @default(autoincrement())
+  source     String
+  type       String
+  sourceGuid String   @unique
+  payload    Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  syncTask   SyncTask?
+}
+
+model Mapping {
+  id           Int       @id @default(autoincrement())
+  source       String
+  sourceGuid   String    @unique
+  target       String
+  targetId     String?
+  lastSyncedAt DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+}
