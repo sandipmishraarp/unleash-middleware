@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link';
 import prisma from '@/lib/db';
 import { RESOURCE_KEYS, RESOURCE_LABELS, UNLEASHED_RESOURCES } from '@/lib/resources';
@@ -55,16 +56,14 @@ export default async function ResourceLogsPage({ params }: { params: { resource:
                 </td>
               </tr>
             )}
-            {logs.map((log) => (
+
+            {logs.map((log: any) => (
               <tr key={log.id}>
                 <td className="whitespace-nowrap px-4 py-3 text-slate-700">
                   {formatDate(log.createdAt)}
                 </td>
                 <td
-                  className={clsx(
-                    'px-4 py-3 font-medium',
-                    log.ok ? 'text-success' : 'text-danger'
-                  )}
+                  className={clsx('px-4 py-3 font-medium', log.ok ? 'text-success' : 'text-danger')}
                 >
                   {log.ok ? 'Success' : 'Failure'}
                 </td>
