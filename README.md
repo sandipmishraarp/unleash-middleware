@@ -1,7 +1,3 @@
-
-
-
-
 # Unleashed Middleware Dashboard
 
 Production-ready Next.js 14 dashboard for monitoring the Unleashed → ROar middleware. Stage 1 + 2
@@ -124,5 +120,8 @@ Unleashed resources (Products, Sales Orders, Purchase Orders, Stock On Hand).
 - Build pipeline orchestration UI and sync task execution.
 - Extend mappings and add Supabase RLS verification where required.
 
-
-
+<!--
+ {
+      "path": "/api/cron/roar-export",
+      "schedule": "*/2 * * * *"
+    }, -->
