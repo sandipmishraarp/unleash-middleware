@@ -119,3 +119,12 @@ Unleashed resources (Products, Sales Orders, Purchase Orders, Stock On Hand).
 - Integrate real ROar credentials and authentication health checks (Stage 3).
 - Build pipeline orchestration UI and sync task execution.
 - Extend mappings and add Supabase RLS verification where required.
+
+  <!-- {
+      "path": "/api/cron/roar-export",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/queue/worker",
+      "schedule": "0 0 * * *"
+    } -->

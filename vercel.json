@@ -1,15 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/cron/roar-export",
-      "schedule": "0 0 * * *"
-    },
-    {
       "path": "/api/cron/probe",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/queue/worker",
       "schedule": "0 0 * * *"
     }
   ]
